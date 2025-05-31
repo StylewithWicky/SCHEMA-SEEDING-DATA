@@ -4,20 +4,20 @@ conn=sqlite3 .connect('book.db')
 cursor=conn.cursor()
 
 cursor.execute('''
-    CREATE TABLE IF NOT EXIST Author(
+    CREATE TABLE IF NOT EXISTS Author(
                id INTERGER PRIMARY KEY,name TEXT,birth_year INTERGER
                )
 
             ''')
 cursor.execute('''
-        CREATE TABLE IF NOT EXIST Genre(
+        CREATE TABLE IF NOT EXISTS Genre(
                id INTERGER PRIMARY KEY,
                name TEXT UNIQUE NOT NULL
 
                )
             ''')
 cursor.execute('''
-        CREATE TABLE IF NOT EXIST Books(
+        CREATE TABLE IF NOT EXISTS Books(
                id INTEGER PRIMARY KEY,
                title TEXT NOT NULL,
                FOREIGN KEY(author_id) REFERENCE Author(id),
@@ -27,3 +27,4 @@ cursor.execute('''
 
                 ''')
 conn.commit()
+conn.close()
