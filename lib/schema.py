@@ -5,26 +5,30 @@ cursor=conn.cursor()
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS Author(
-               id INTERGER PRIMARY KEY,name TEXT,birth_year INTERGER
+               id INTEGER PRIMARY KEY,name TEXT,birth_year INTERGER
                )
 
             ''')
+
 cursor.execute('''
         CREATE TABLE IF NOT EXISTS Genre(
-               id INTERGER PRIMARY KEY,
+               id INTEGER PRIMARY KEY,
                name TEXT UNIQUE NOT NULL
 
                )
             ''')
 cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Books(
-               id INTEGER PRIMARY KEY,
-               title TEXT NOT NULL,
-               FOREIGN KEY(author_id) REFERENCE Author(id),
-               FOREIGN KEY(genre_id) REFERENCE Genre(id),
-               year_published INTERGER
-               )          
+        CREATE TABLE IF NOT EXISTS Publisher(
+              id INTEGER PRIMARY KEY,
+               name TEXT NOT NULL,
+               author_id INTEGER NOT NULL,
+               genre_id INTEGER NOT NULL,
+               year_published INTEGER NOT NULL,
+               FOREIGN KEY (author_id) REFERENCE Author(id),
+               FOREIGN KEY (genre_id) REFERENCE Genre(id)
 
-                ''')
+               )
+                
+            ''')
 conn.commit()
 conn.close()

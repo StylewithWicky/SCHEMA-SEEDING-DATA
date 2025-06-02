@@ -13,8 +13,9 @@ cursor.execute("INSERT INTO Genre (id,name) VALUES (?,?)",(1,'Fantasy'))
 cursor.execute("INSERT INTO Genre (id,name) VALUES (?,?)",(2,'Dystopian'))
 cursor.execute("INSERT INTO Genre (id,name) VALUES (?,?)",(3,'Romance'))
 
-#Seeding into Books
-cursor.execute('INSERT INTO BOOKS (id,title,author_id,genre_id,year_published) VALUE (?,?,?,?,?)',(1,'Harry Potter and the Sorcerer’s Stone',1,1,1990))
-cursor.execute('INSERT INTO BOOKS (id,title,author_id,genre_id,year_published) VALUE (?,?,?,?,?)',(1,'Harry Potter and the Sorcerer’s Stone',1,1,1980))
-cursor.execute('INSERT INTO BOOKS (id,title,author_id,genre_id,year_published) VALUE (?,?,?,?,?)',(1,'Harry Potter and the Sorcerer’s Stone',1,1,1950))
+#Seeding into Publisher
+cursor.execute("INSERT INTO Publisher (id,name,author_id,genre_id,year_published) VALUES(?,?,?,?,?)", (1,'Peter Parker',1, 1, 1778))
+cursor.execute("INSERT INTO Publisher (id,name,author_id,genre_id,year_published) VALUES(?,?,?,?,?)", (2,'Barry Allen',2, 2, 1978))
+cursor.execute("INSERT INTO Publisher (id,name,author_id,genre_id,year_published) VALUES(?,?,?,?,?)", (3,'Louise Lane',3, 3, 1788))
 conn.commit()
+conn.close()
